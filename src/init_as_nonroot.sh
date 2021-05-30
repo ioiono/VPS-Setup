@@ -26,6 +26,7 @@ apt-get update && apt-get install -y \
     sudo \
     vim \
 
+
 # shellcheck disable=SC2059
 printf "\n${GREEN}Installation done.${NC}\n\n"
 
@@ -35,12 +36,12 @@ useradd -rm -d /home/admin -s /bin/zsh -g root -G sudo -u 1000 -p "$(openssl pas
 printf "\n${GREEN}admin created.${NC}\n\n"
 
 
-# now run command as admin
-whoami
-sudo -i -u admin bash << EOF
-echo "In"
-whoami
+ADMIN_HOME=/home/admin
+export ZSH="$ADMIN_HOME/.oh-my-zsh"
+export ZSH_CUSTOM="$ZSH/custom"
 
+printf "\nZSH: %s\n\n" "$ZSH"
+printf "\nZSH_CUSTOM: %s\n\n" "$ZSH_CUSTOM"
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 chsh -s "$(which zsh)"
@@ -66,8 +67,6 @@ echo "export TIMER_PRECISION=2"
 echo "export TIMER_FORMAT=\"\n\$fg[white]Time: %d\""
 } >> ~/.zshrc
 
-EOF
-echo "Out"
-whoami
+# start using zsh
 
-printf "\n${GREEN}Finished.${NC}\n\n"
+zsh
