@@ -37,6 +37,7 @@ printf "\n${GREEN}admin created.${NC}\n\n"
 
 
 ADMIN_HOME=/home/admin
+export HOME=$ADMIN_HOME
 export ZSH="$ADMIN_HOME/.oh-my-zsh"
 export ZSH_CUSTOM="$ZSH/custom"
 
@@ -44,12 +45,10 @@ printf "\nZSH: %s\n\n" "$ZSH"
 printf "\nZSH_CUSTOM: %s\n\n" "$ZSH_CUSTOM"
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-chsh -s "$(which zsh)"
-
 
 # change default zsh theme
 sed -i 's/^ZSH_THEME=.*/ZSH_THEME="crcandy"/' ~/.zshrc
-sed -i 's/^plugins=.*/plugins=(git docker docker-compose zsh-syntax-highlighting zsh-autosuggestions zsh-completions timer)/' ~/.zshrc
+sed -i 's/^plugins=.*/plugins=(git brew docker docker-compose zsh-syntax-highlighting zsh-autosuggestions zsh-completions timer)/' ~/.zshrc
 
 # zsh plugins
 # shellcheck disable=SC2086
@@ -65,8 +64,9 @@ echo "ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=\"fg=7\""
 echo "export TIMER_PRECISION=2"
 # shellcheck disable=SC2028
 echo "export TIMER_FORMAT=\"\n\$fg[white]Time: %d\""
-} >> ~/.zshrc
+} >> $HOME/.zshrc
 
-# start using zsh
+chown -R admin:root $ZSH
+chown admin:root $HOME/.zshrc
 
-zsh
+su - admin

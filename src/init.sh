@@ -36,7 +36,7 @@ chsh -s "$(which zsh)"
 
 # change default zsh theme
 sed -i 's/^ZSH_THEME=.*/ZSH_THEME="crcandy"/' ~/.zshrc
-sed -i 's/^plugins=.*/plugins=(git docker docker-compose zsh-syntax-highlighting zsh-autosuggestions zsh-completions timer)/' ~/.zshrc
+sed -i 's/^plugins=.*/plugins=(git brew docker docker-compose zsh-syntax-highlighting zsh-autosuggestions zsh-completions timer)/' ~/.zshrc
 
 # zsh plugins
 # shellcheck disable=SC2086
