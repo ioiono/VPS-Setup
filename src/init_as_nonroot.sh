@@ -25,6 +25,7 @@ apt-get update && apt-get install -y \
     wget \
     sudo \
     vim \
+    net-tools \
 
 
 # shellcheck disable=SC2059
