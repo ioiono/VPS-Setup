@@ -27,7 +27,7 @@ apt-get update && apt-get install -y \
     vim \
 
 echo ""
-echo "${GREEN}Installation done.${NC}"
+echo -e "${GREEN}Installation done.${NC}"
 echo ""
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
