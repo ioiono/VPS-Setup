@@ -27,7 +27,8 @@ apt-get update && apt-get install -y \
     vim \
 
 
-printf "${GREEN}Installation done.${NC}\n\n"
+# shellcheck disable=SC2059
+printf "\n${GREEN}Installation done.${NC}\n\n"
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 chsh -s "$(which zsh)"
