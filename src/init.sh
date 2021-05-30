@@ -13,6 +13,9 @@
 
 set -e
 
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+
 timedatectl set-timezone Asia/Singapore
 
 apt-get update && apt-get install -y \
@@ -24,7 +27,7 @@ apt-get update && apt-get install -y \
     vim \
 
 echo ""
-echo "Installation done."
+echo "${GREEN}Installation done.${NC}"
 echo ""
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
