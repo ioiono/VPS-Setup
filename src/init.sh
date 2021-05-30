@@ -23,6 +23,10 @@ apt-get update && apt-get install -y \
     sudo \
     vim \
 
+echo ""
+echo "Installation done."
+echo ""
+
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 chsh -s "$(which zsh)"
 
@@ -32,9 +36,12 @@ sed -i 's/^ZSH_THEME=.*/ZSH_THEME="crcandy"/' ~/.zshrc
 sed -i 's/^plugins=.*/plugins=(git docker docker-compose zsh-syntax-highlighting zsh-autosuggestions zsh-completions timer)/' ~/.zshrc
 
 # zsh plugins
-git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-completions "${ZSH_CUSTOM:=$HOME/.oh-my-zsh/custom}"/plugins/zsh-completions
+# shellcheck disable=SC2086
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+# shellcheck disable=SC2086
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+# shellcheck disable=SC2086
+git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
 
 {
 echo "autoload -U compinit && compinit"
