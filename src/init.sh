@@ -51,8 +51,8 @@ git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zs
 echo "autoload -U compinit && compinit"
 echo "ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=\"fg=7\""
 echo "export TIMER_PRECISION=2"
-# shellcheck disable=SC2028
-echo "export TIMER_FORMAT=\"\n\$fg[white]Time: %d\""
+# shellcheck disable=SC2016
+printf '%s\n' 'export TIMER_FORMAT="\n$fg[white]Time: %d"'
 } >> ~/.zshrc
 
 # start using zsh
