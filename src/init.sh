@@ -37,7 +37,7 @@ chsh -s "$(which zsh)"
 
 # change default zsh theme
 sed -i 's/^ZSH_THEME=.*/ZSH_THEME="crcandy"/' ~/.zshrc
-sed -i 's/^plugins=.*/plugins=(git brew docker docker-compose zsh-syntax-highlighting zsh-autosuggestions zsh-completions timer)/' ~/.zshrc
+sed -i 's/^plugins=.*/plugins=(git brew docker docker-compose zsh-syntax-highlighting zsh-autosuggestions zsh-completions)/' ~/.zshrc
 
 # zsh plugins
 # shellcheck disable=SC2086
@@ -50,9 +50,6 @@ git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zs
 {
 echo "autoload -U compinit && compinit"
 echo "ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=\"fg=7\""
-echo "export TIMER_PRECISION=2"
-# shellcheck disable=SC2016
-printf '%s\n' 'export TIMER_FORMAT="\n$fg[white]Time: %d"'
 } >> ~/.zshrc
 
 # start using zsh
